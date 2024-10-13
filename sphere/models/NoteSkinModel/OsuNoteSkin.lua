@@ -371,24 +371,6 @@ function OsuNoteSkin:load()
 		mode = config:get("ColumnLineMode"),
 	})
 
-	if not SplitStages then
-		self:addStages(
-			columns[1],
-			columns[ninputs] + width[ninputs] + space[ninputs + 1],
-			self.fullWidth
-		)
-	else
-		self:addStages(
-			columns[1],
-			columns[ninputs2] + width[ninputs2],
-			widthLeft
-		)
-		self:addStages(
-			columns[ninputs2] + width[ninputs2] + space[ninputs2 + 1],
-			columns[ninputs] + width[ninputs],
-			widthRight
-		)
-	end
 
 	self:addHpBar()
 
@@ -426,6 +408,25 @@ function OsuNoteSkin:load()
 	local keysUnderNotes = mania.KeysUnderNotes == 1
 	if not keysUnderNotes then
 		addNotes()
+	end
+
+	if not SplitStages then
+		self:addStages(
+			columns[1],
+			columns[ninputs] + width[ninputs] + space[ninputs + 1],
+			self.fullWidth
+		)
+	else
+		self:addStages(
+			columns[1],
+			columns[ninputs2] + width[ninputs2],
+			widthLeft
+		)
+		self:addStages(
+			columns[ninputs2] + width[ninputs2] + space[ninputs2 + 1],
+			columns[ninputs] + width[ninputs],
+			widthRight
+		)
 	end
 
 	playfield:addKeyImages({
